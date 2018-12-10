@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MudaaCam : MonoBehaviour {
     
+    
 	public void ComecaJogo()
     {
         Application.LoadLevel("Shooter");

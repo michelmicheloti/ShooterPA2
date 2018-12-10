@@ -15,13 +15,11 @@ public class seguir : MonoBehaviour {
     bool dano = false;
     bool persegue = false;
     int muni;
-    public static int ZumbiMorto = 0;
-
 
 
     // Use this for initialization
     void Start() {
-
+        persegue = false;
     }
 
     // Update is called once per frame
@@ -37,7 +35,7 @@ public class seguir : MonoBehaviour {
         {
             GameObject.Destroy(barra);
             GameObject.Destroy(gameObject);
-            ZumbiMorto++;
+            Atire.ZumbiMorto++;
             GameObject.Instantiate(sangue,
                 transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z),
                 transform.rotation
@@ -52,12 +50,6 @@ public class seguir : MonoBehaviour {
         {
             life++;
             dano = false;
-        }
-
-        if (ZumbiMorto == (EnemyManager.qtdZumbi)+1)
-        {
-            Application.LoadLevel("Ganhou");
-            ZumbiMorto = 0;
         }
 
     }
@@ -78,7 +70,7 @@ public class seguir : MonoBehaviour {
         {
             GameObject.Destroy(barra);
             GameObject.Destroy(gameObject);
-            ZumbiMorto++;
+            Atire.ZumbiMorto++;
             GameObject.Instantiate(sangue,
                 transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z),
                 transform.rotation
@@ -91,14 +83,14 @@ public class seguir : MonoBehaviour {
 
     }
 
-    private void OnTriggerExit(Collider other)
+     void OnTriggerExit(Collider col)
     {
-        persegue = true;
+        //persegue = true;
     }
 
     void recarga()
     {
-        if (muni == 1 || muni == 3)
+        if (muni == 1 || muni == 2)
         {
             GameObject.Instantiate(
                 municao,
